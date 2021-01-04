@@ -68,7 +68,29 @@
         <artifactId>activation</artifactId>
         <version>1.1.1</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+<dependency>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>3.6.1.1688</version>
+</dependency>
 		</dependencies>
+		
+		<profiles>
+		<profile>
+      <id>sonar</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+            <sonar.jdbc.url>jdbc:mysql://ipaddress:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true</sonar.jdbc.url>
+            <sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+            <sonar.jdbc.username>sonar</sonar.jdbc.username>
+            <sonar.jdbc.password>sonar</sonar.jdbc.password>   
+            <sonar.host.url>http://localhost:9000</sonar.host.url>
+      </properties>
+</profile>
+		</profiles>
 
 	<build>
 		<plugins>
